@@ -86,6 +86,22 @@ namespace hpp {
 	return o;
       }
 
+      /// Check whether this function is parametric.
+      /// \return True if parametric.
+      bool isParametric () const
+      {
+        return isParametric_;
+      }
+
+      /// Make the function parametric or non-parametric.
+      /// \param value True if you want a parametric projector.
+      /// \note When change from true to false, leaf parameters of any
+      /// ConfigProjector containing the function should be recomputed using
+      /// ConfigProjector::setLeafParameter.
+      void isParametric (const bool& value)
+      {
+        isParametric_ = value;
+      }
     protected:
       /// \brief Concrete class constructor should call this constructor.
       ///
