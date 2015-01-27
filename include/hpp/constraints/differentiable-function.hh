@@ -24,7 +24,10 @@
 
 namespace hpp {
   namespace constraints {
-    /// Differentiable function of the robot configuration
+    /// \addtogroup constraints
+    /// \{
+
+    /// Differentiable function
     class HPP_CONSTRAINTS_DLLAPI DifferentiableFunction
     {
     public:
@@ -53,8 +56,8 @@ namespace hpp {
 	assert (jacobian.cols () == inputDerivativeSize ());
 	impl_jacobian (jacobian, argument);
         for (size_t i = 0; i < passiveDofs_.size(); i++)
-          jacobian.middleCols (passiveDofs_[i].first, passiveDofs_[i].second).
-	    setZero ();
+          jacobian.middleCols (passiveDofs_[i].first, 
+			       passiveDofs_[i].second).setZero ();
       }
 
       /// Get dimension of input vector
@@ -92,23 +95,6 @@ namespace hpp {
 	return o;
       }
 
-      /// Check whether this function is parametric.
-      /// \return True if parametric.
-      bool isParametric () const
-      {
-        return isParametric_;
-      }
-
-      /// Make the function parametric or non-parametric.
-      /// \param value True if you want a parametric projector.
-      /// \note When change from true to false, the level set parameters of any
-      /// ConfigProjector containing the function should be recomputed using
-      /// ConfigProjector::offset.
-      void isParametric (const bool& value)
-      {
-        isParametric_ = value;
-      }
-
       /// Set passive DOFs. Passive DOF cannot be modified by this function.
       /// Corresponding columns of the jacobian are set to zero.
       const Intervals_t& passiveDofs (std::vector <size_type> dofs)
@@ -144,8 +130,7 @@ namespace hpp {
 			      size_type outputSize,
 			      std::string name = std::string ()) :
 	inputSize_ (inputSize), inputDerivativeSize_ (inputDerivativeSize),
-	outputSize_ (outputSize), isParametric_ (false),
-       passiveDofs_ (0), name_ (name)
+	outputSize_ (outputSize), passiveDofs_ (0), name_ (name)
       {
       }
 
@@ -163,8 +148,6 @@ namespace hpp {
       size_type inputDerivativeSize_;
       /// Dimension of output vector
       size_type outputSize_;
-      /// Whether this function is parametric
-      bool isParametric_;
       /// Intervals of passive dofs
       Intervals_t passiveDofs_;
       std::string name_;
@@ -174,6 +157,7 @@ namespace hpp {
     {
       return f.print (os);
     }
+    /// \}
   } // namespace constraints
 } // namespace hpp
 

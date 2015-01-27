@@ -29,6 +29,9 @@ namespace hpp {
     typedef Eigen::Matrix <double, 3, 1> vector3_t;
   } // namespace eigen
   namespace constraints {
+    /// \addtogroup constraints
+    /// \{
+
     /// Constraint on the relative orientation of two robot joints
     ///
     /// The value of the function is defined as follows:
@@ -62,6 +65,21 @@ namespace hpp {
       EIGEN_MAKE_ALIGNED_OPERATOR_NEW
       /// Return a shared pointer to a new instance
       ///
+      /// \param name the name of the constraints,
+      /// \param robot the robot the constraints is applied to,
+      /// \param joint1 the first joint the orientation of which is constrained
+      /// \param joint2 the second joint the orientation of which is constrained
+      /// \param reference desired relative orientation
+      ///        \f$R_1(\mathbf{q})^T R_2(\mathbf{q})\f$ between the joints,
+      /// \param mask which component of the error vector to take into
+      ///        account.
+
+      static RelativeOrientationPtr_t create
+	(const std::string& name, const DevicePtr_t& robot,
+         const JointPtr_t& joint1, const JointPtr_t& joint2,
+         const matrix3_t& reference, std::vector <bool> mask = boost::assign::list_of (true)(true)(true));
+      /// Return a shared pointer to a new instance
+      ///
       /// \param robot the robot the constraints is applied to,
       /// \param joint1 the first joint the orientation of which is constrained
       /// \param joint2 the second joint the orientation of which is constrained
@@ -86,13 +104,14 @@ namespace hpp {
       }
       ///Constructor
       ///
+      /// \param name the name of the constraints,
       /// \param robot the robot the constraints is applied to,
       /// \param joint the joint the orientation of which is constrained
       /// \param reference reference orientation of the joint,
       /// \param mask which component of the error vector to take into
       ///        account.
-      RelativeOrientation (const DevicePtr_t&, const JointPtr_t& joint1,
-			   const JointPtr_t& joint2,
+      RelativeOrientation (const std::string& name, const DevicePtr_t&,
+                           const JointPtr_t& joint1, const JointPtr_t& joint2,
 			   const matrix3_t& reference, std::vector <bool> mask =
 			   boost::assign::list_of (true)(true)(true));
     protected:
@@ -118,6 +137,7 @@ namespace hpp {
       mutable eigen::matrix3_t Jlog_;
       mutable matrix_t jacobian_;
     }; // class RelativeOrientation
+    /// \}
   } // namespace constraints
 } // namespace hpp
 #endif // HPP_RELATIVE_ORIENTATION_HH

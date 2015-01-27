@@ -31,6 +31,9 @@ namespace hpp {
     typedef Eigen::Matrix <double, 3, 1> vector3_t;
   } // namespace eigen
   namespace constraints {
+    /// \addtogroup constraints
+    /// \{
+
     /// Constraint on the relative position of two robot joints
     ///
     /// The value of the function is defined as follows:
@@ -65,6 +68,22 @@ namespace hpp {
       EIGEN_MAKE_ALIGNED_OPERATOR_NEW
       /// Return a shared pointer to a new instance
       ///
+      /// \param name the name of the constraints,
+      /// \param robot the robot the constraints is applied to,
+      /// \param joint1, joint2 joints the relative positions of which is
+      ///                       constrained.
+      /// \param point1, point2 the points on each joint that should coincide
+      ///   expressed in joint local frames.
+      /// \param mask which component of the error vector to take into
+      ///        account.
+      static RelativePositionPtr_t create
+	(const std::string& name, const DevicePtr_t& robot,
+         const JointPtr_t& joint1, const JointPtr_t& joint2,
+         const vector3_t& point1, const vector3_t& point2,
+	 std::vector <bool> mask = boost::assign::list_of (true)(true)(true));
+
+      /// Return a shared pointer to a new instance
+      ///
       /// \param robot the robot the constraints is applied to,
       /// \param joint1, joint2 joints the relative positions of which is
       ///                       constrained.
@@ -87,10 +106,10 @@ namespace hpp {
       ///   expressed in joint local frames.
       /// \param mask which component of the error vector to take into
       ///        account.
-      RelativePosition (const DevicePtr_t& robot, const JointPtr_t& joint1,
-			const JointPtr_t& joint2, const vector3_t& point1,
-			const vector3_t& point2, std::vector <bool> mask =
-			boost::assign::list_of (true)(true)(true));
+      RelativePosition (const std::string& name, const DevicePtr_t& robot,
+                        const JointPtr_t& joint1, const JointPtr_t& joint2,
+                        const vector3_t& point1, const vector3_t& point2,
+                        std::vector <bool> mask = boost::assign::list_of (true)(true)(true));
 
       /// Get reference point in joint 1
       const vector3_t& pointInJoint1 () const
@@ -140,6 +159,7 @@ namespace hpp {
       mutable eigen::matrix3_t R1T_;
       mutable eigen::vector3_t T1_;
     }; // class RelativePosition
+    /// \}
   } // namespace constraints
 } // namespace hpp
 #endif // HPP_CONSTRAINTS_RELATIVE_POSITION_HH
