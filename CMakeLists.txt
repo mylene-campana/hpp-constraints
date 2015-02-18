@@ -30,6 +30,7 @@ SET(${PROJECT_NAME}_HEADERS
   include/hpp/constraints/tool.hh
   include/hpp/constraints/orientation.hh
   include/hpp/constraints/position.hh
+  include/hpp/constraints/transformation.hh
   include/hpp/constraints/relative-com.hh
   include/hpp/constraints/relative-orientation.hh
   include/hpp/constraints/relative-position.hh

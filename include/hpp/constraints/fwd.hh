@@ -32,6 +32,7 @@ namespace hpp {
 
     HPP_PREDEF_CLASS (Orientation);
     HPP_PREDEF_CLASS (Position);
+    HPP_PREDEF_CLASS (Transformation);
     HPP_PREDEF_CLASS (RelativeCom);
     HPP_PREDEF_CLASS (RelativeOrientation);
     HPP_PREDEF_CLASS (RelativePosition);
@@ -59,6 +60,7 @@ namespace hpp {
     typedef model::Transform3f Transform3f;
     typedef boost::shared_ptr<Orientation> OrientationPtr_t;
     typedef boost::shared_ptr<Position> PositionPtr_t;
+    typedef boost::shared_ptr<Transformation> TransformationPtr_t;
     typedef boost::shared_ptr<RelativeOrientation> RelativeOrientationPtr_t;
     typedef boost::shared_ptr<RelativeCom> RelativeComPtr_t;
     typedef boost::shared_ptr<RelativePosition> RelativePositionPtr_t;

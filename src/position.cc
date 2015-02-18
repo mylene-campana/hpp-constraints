@@ -56,11 +56,13 @@ namespace hpp {
     }
 
     Position::Position (const std::string& name, const DevicePtr_t& robot,
-                        const JointPtr_t& joint, const vector3_t& pointInLocalFrame,
-                        const vector3_t& targetInGlobalFrame, const matrix3_t& rotation,
+                        const JointPtr_t& joint, 
+			const vector3_t& pointInLocalFrame,
+                        const vector3_t& targetInGlobalFrame, 
+			const matrix3_t& rotation,
                         std::vector <bool> mask) :
       DifferentiableFunction (robot->configSize (), robot->numberDof (),
-		mask [0] + mask [1] + mask [2],	name),
+			      mask [0] + mask [1] + mask [2],	name),
       robot_ (robot), joint_ (joint), pointInLocalFrame_ (pointInLocalFrame),
       targetInGlobalFrame_ (targetInGlobalFrame), SBT_ (), result_ (3)
     {
