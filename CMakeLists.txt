@@ -27,11 +27,12 @@ SET(PROJECT_URL "https://github.com/laas/hpp-constraints")
 SET(${PROJECT_NAME}_HEADERS
   include/hpp/constraints/differentiable-function.hh
   include/hpp/constraints/fwd.hh
-  include/hpp/constraints/tool.hh
+  include/hpp/constraints/tools.hh
   include/hpp/constraints/orientation.hh
   include/hpp/constraints/position.hh
   include/hpp/constraints/transformation.hh
   include/hpp/constraints/relative-com.hh
+  include/hpp/constraints/com-between-feet.hh
   include/hpp/constraints/relative-orientation.hh
   include/hpp/constraints/relative-position.hh
   include/hpp/constraints/relative-transformation.hh

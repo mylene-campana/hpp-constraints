@@ -34,6 +34,7 @@ namespace hpp {
     HPP_PREDEF_CLASS (Position);
     HPP_PREDEF_CLASS (Transformation);
     HPP_PREDEF_CLASS (RelativeCom);
+    HPP_PREDEF_CLASS (ComBetweenFeet);
     HPP_PREDEF_CLASS (RelativeOrientation);
     HPP_PREDEF_CLASS (RelativePosition);
     HPP_PREDEF_CLASS (RelativeTransformation);
@@ -41,7 +42,10 @@ namespace hpp {
 
     typedef model::ConfigurationIn_t ConfigurationIn_t;
     typedef model::ConfigurationOut_t ConfigurationOut_t;
+    typedef model::Device Device;
     typedef model::DevicePtr_t DevicePtr_t;
+    typedef model::CenterOfMassComputation CenterOfMassComputation;
+    typedef model::CenterOfMassComputationPtr_t CenterOfMassComputationPtr_t;
     typedef boost::shared_ptr <DifferentiableFunction>
     DifferentiableFunctionPtr_t;
     typedef model::size_type size_type;
@@ -63,6 +67,7 @@ namespace hpp {
     typedef boost::shared_ptr<Transformation> TransformationPtr_t;
     typedef boost::shared_ptr<RelativeOrientation> RelativeOrientationPtr_t;
     typedef boost::shared_ptr<RelativeCom> RelativeComPtr_t;
+    typedef boost::shared_ptr<ComBetweenFeet> ComBetweenFeetPtr_t;
     typedef boost::shared_ptr<RelativePosition> RelativePositionPtr_t;
     typedef boost::shared_ptr<RelativeTransformation>
     RelativeTransformationPtr_t;

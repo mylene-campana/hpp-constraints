@@ -16,11 +16,12 @@
 SET(LIBRARY_NAME ${PROJECT_NAME})
 ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
-  tool.cc
+  tools.cc
   position.cc
   orientation.cc
   transformation.cc
   relative-com.cc
+  com-between-feet.cc
   relative-orientation.cc
   relative-position.cc
   relative-transformation.cc
