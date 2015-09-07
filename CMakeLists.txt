@@ -18,6 +18,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET(CXX_DISABLE_WERROR TRUE)
 INCLUDE(cmake/base.cmake)
+INCLUDE(cmake/boost.cmake)
 
 SET(PROJECT_NAME hpp-constraints)
 SET(PROJECT_DESCRIPTION
@@ -26,6 +27,7 @@ SET(PROJECT_URL "https://github.com/laas/hpp-constraints")
 
 SET(${PROJECT_NAME}_HEADERS
   include/hpp/constraints/differentiable-function.hh
+  include/hpp/constraints/distance-between-bodies.hh
   include/hpp/constraints/fwd.hh
   include/hpp/constraints/tools.hh
   include/hpp/constraints/orientation.hh
@@ -46,6 +48,7 @@ IF (HPP_DEBUG)
 ENDIF()
 
 SETUP_PROJECT()
+SEARCH_FOR_BOOST()
 ADD_REQUIRED_DEPENDENCY("hpp-model >= 3")
 PKG_CONFIG_APPEND_LIBS("hpp-constraints")
 

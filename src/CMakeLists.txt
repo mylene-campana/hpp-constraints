@@ -16,6 +16,8 @@
 SET(LIBRARY_NAME ${PROJECT_NAME})
 ADD_LIBRARY(${LIBRARY_NAME}
   SHARED
+  distance-between-bodies.cc
+  distance-between-points-in-bodies.cc
   tools.cc
   position.cc
   orientation.cc
